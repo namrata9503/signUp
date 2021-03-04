@@ -21,7 +21,7 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-user"></i></span>
                       </div>
-                      <input type="text" [(ngModel)]="userObj.fname" formControlName="fname" class="form-control "
+                      <input type="text" [(ngModel)]="userObj.firstName" formControlName="fname" class="form-control "
                         id="fname" placeholder="FirstName"
                         [ngClass]="{ 'is-invalid': f.fname.touched && f.fname.errors }">
                       <div *ngIf="f.fname.touched && f.fname.errors" class="invalid-feedback">
@@ -33,7 +33,7 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-user"></i></span>
                       </div>
-                      <input type="text" [(ngModel)]="userObj.lname" formControlName="lname" class="form-control "
+                      <input type="text" [(ngModel)]="userObj.lastName" formControlName="lname" class="form-control "
                         id="lname" placeholder="LasttName"
                         [ngClass]="{ 'is-invalid': f.lname.touched && f.lname.errors }">
                       <div *ngIf="f.lname.touched && f.lname.errors" class="invalid-feedback">
@@ -58,9 +58,15 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-key"></i></span>
                       </div>
-                      <input type="text" [(ngModel)]="userObj.password" formControlName="password" class="form-control "
+                      <input type="password" [(ngModel)]="userObj.password" formControlName="password" class="form-control "
                         id="password" placeholder="Password"
                         [ngClass]="{ 'is-invalid': f.password.touched && f.password.errors }">
+                        <div class="info">
+                          <i class="fa fa-info-circle"></i>                    
+                          <span class="extra-info">
+                            Password is required.
+                          </span>
+                        </div>
                       <div *ngIf="f.password.touched && f.password.errors" class="invalid-feedback">
                         <div *ngIf="f.password.errors.required" class="text-danger"> Password is required.</div>
                         <div *ngIf="f.password.errors.minlength" class="text-danger">Password must be at least 8
