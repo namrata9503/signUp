@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
+import { PostUserService } from './services/post-user.service';
 
 
 @NgModule({
@@ -19,7 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [PostUserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

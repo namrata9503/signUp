@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Inject, Input } from '@angular/core';
+import { Component, Inject, Input, Renderer2, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ConfirmedValidator } from './shared/PasswordValidator';
 import { PostUserService } from './services/post-user.service';
@@ -12,6 +12,7 @@ import { DOCUMENT } from '@angular/common';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  isDisabled = false;
   form: FormGroup = new FormGroup({});
   errorMessage: boolean | undefined;
   submitted = false;
@@ -22,6 +23,8 @@ export class AppComponent {
 
   constructor(private formBuilder: FormBuilder,
     private postUsers: PostUserService,
+    private renderer: Renderer2,
+    private el: ElementRef,
     @Inject(DOCUMENT) private _document: Document) { }
 
   ngOnInit() {
@@ -42,17 +45,31 @@ export class AppComponent {
   get f() { return this.form.controls; }
 
   postUser(data: any) {
+    this.loading = true;
+    this.isDisabled = true;
+
     this.postUsers.postUser(this.userObj).subscribe((data: any) => {
       console.log("success", data);
       this.updateMessage = "Data added successfully..!!!";
+      const button = this.renderer.createElement('button');
+      const buttonText = this.renderer.createText('Sign Up User');
+      this.renderer.appendChild(button, buttonText);
+      button.classList.add("btn__signup");
+      this.renderer.appendChild(this.el.nativeElement, button);
+      this.renderer.listen(button, 'click', () => {
+        this._document.location.reload();
+      });
       this.submitted = true;
+      this.loading = false;
+
     },
       (error: any) => {
+        this.loading = false;
+
         this.errorMessage = true;
         this.updateMessage = "Something went wrong on server.. Please try again later..!!!";
         console.error('error caught in component', error)
         this.form.reset();
-        this.loading = false;
       });
 
   }
