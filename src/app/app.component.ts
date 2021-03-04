@@ -58,8 +58,8 @@ export class AppComponent {
             Validators.minLength(8),
             Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z]).{8,}$/),
             Validators.required,
-          ],
-        ],
+          ]
+        ]
       },
       {
         validator: ConfirmedValidator('password', 'fname', 'lname')

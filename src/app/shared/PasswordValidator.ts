@@ -12,8 +12,6 @@ export function ConfirmedValidator(
     if ('' !== pwd.value && '' !== first.value && '' !== last.value) {
       if (pwd.value.includes(first.value) || pwd.value.includes(last.value)) {
         pwd.setErrors({ confirmedValidator: true });
-      } else {
-        pwd.setErrors(null);
       }
     }
   };

@@ -58,7 +58,7 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-key"></i></span>
                       </div>
-                      <input type="password" [(ngModel)]="userObj.password" formControlName="password" class="form-control "
+                      <input type="text" [(ngModel)]="userObj.password" formControlName="password" class="form-control "
                         id="password" placeholder="Password"
                         [ngClass]="{ 'is-invalid': f.password.touched && f.password.errors }">
                         <div class="info">
