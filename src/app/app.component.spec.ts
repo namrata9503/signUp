@@ -4,9 +4,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ConfirmedValidator } from './shared/PasswordValidator';
 import { AppComponent } from './app.component';
 import {
-  HttpClientTestingModule,
-  HttpTestingController,
-} from '@angular/common/http/testing';
+  HttpClientTestingModule,} from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
   beforeEach(async () => {

@@ -41,10 +41,13 @@
 .btn__disable{
     cursor: not-allowed;
 }
+.button_container{
+  float: right;
+justify-content: right;
+}
 
 .spin {
   position: fixed;
-  
   z-index: 3000;
   top: 30%;
   left: 50%;
@@ -69,6 +72,7 @@
   color:whitesmoke;
   padding: 15px;
   border: 0;
+  border-radius: 3px;
 }
  /* info button styling */
  * {
@@ -76,15 +80,18 @@
 }
  .extra-info {
   display: none;
-  line-height: 30px;
+  line-height: 20px;
   font-size: 12px;
 	position: absolute;
-  top: 0;
-  left: 50px;
+
 }
 
 .info:hover .extra-info {
-  display: block;
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.02);
+  padding: 0 0 0 5px;
+  width: 260px;
+  border: 1px solid black;
 }
 
 .info {
@@ -95,8 +102,14 @@
 }
 
 .info:hover {
-  background-color: lightgray;
-  padding: 0 0 0 5px;
-  width: 315px;
-  text-align: left !important;
+  
+}
+.extra-info ul
+{
+padding: 10px;
+margin: 0px;
+}
+.extra-info ul li{
+  margin-top:0px; 
+  margin-left:10px;
 }

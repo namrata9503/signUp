@@ -1,15 +1,16 @@
 import {
   Component,
+  OnInit,
   Inject,
   Input,
   Renderer2,
-  ElementRef,
-
+  ElementRef
 } from '@angular/core';
 import {
   FormGroup,
   Validators,
-  FormBuilder
+  FormBuilder,
+  AbstractControlOptions,
 } from '@angular/forms';
 import { ConfirmedValidator } from './shared/PasswordValidator';
 import { PostUserService } from './services/post-user.service';
@@ -38,7 +39,7 @@ export class AppComponent {
     @Inject(DOCUMENT) private document: Document
   ) {}
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.form = this.formBuilder.group(
       {
         fname: ['', [Validators.required]],
@@ -58,12 +59,12 @@ export class AppComponent {
             Validators.minLength(8),
             Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z]).{8,}$/),
             Validators.required,
-          ]
-        ]
+          ],
+        ],
       },
       {
-        validator: ConfirmedValidator('password', 'fname', 'lname')
-      }
+        validator: ConfirmedValidator('password', 'fname', 'lname'),
+      } as AbstractControlOptions
     );
   }
 

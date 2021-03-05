@@ -58,13 +58,18 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-key"></i></span>
                       </div>
-                      <input type="text" [(ngModel)]="userObj.password" formControlName="password" class="form-control "
+                      <input type="password" [(ngModel)]="userObj.password" formControlName="password" class="form-control "
                         id="password" placeholder="Password"
                         [ngClass]="{ 'is-invalid': f.password.touched && f.password.errors }">
                         <div class="info">
                           <i class="fa fa-info-circle"></i>                    
                           <span class="extra-info">
-                            Password is required.
+                            <ul >
+
+                            <li >Password must be at least 8 characters.</li>
+                            <li >Password must be a contain uppercase and lowercase letter.</li>
+                          <li >Password should not contain firstname or lastname.</li>
+                          </ul>
                           </span>
                         </div>
                       <div *ngIf="f.password.touched && f.password.errors" class="invalid-feedback">
@@ -81,10 +86,13 @@
                       </div>
                     </div>
                   </div>
-                  <button class="btn btn-primary m-2 btn__disable" [disabled]="!form.valid || isDisabled" clicked=true;
+                  <div class="button_container">
+                    <button class="btn btn-primary m-2 btn__disable" [disabled]="!form.valid || isDisabled" clicked=true;
                     type="submit">
                     Submit</button>
                   <button class="btn btn-primary m-2" (click)=" refreshPage()">Cancel</button>
+                  </div>
+                  
                   <div class="spinner_overlay" *ngIf="loading"></div>
                   <div class=" spin d-flex justify-content-center align-items-center">
                     <div class="spinner-border  text-primary" style="width: 5rem; height: 5rem;border-width: 8px;"
