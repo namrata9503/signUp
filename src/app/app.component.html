@@ -14,18 +14,18 @@
             <div class="card-body">
 
               <div >
-                <form [formGroup]="form" (ngSubmit)="postUser(userObj)">
+                <form [formGroup]="form" (ngSubmit)="postUser(user)">
 
                   <div class="row justify-content-between">
                     <div class="input-group form-group">
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-user"></i></span>
                       </div>
-                      <input type="text" [(ngModel)]="userObj.firstName" formControlName="fname" class="form-control "
-                        id="fname" placeholder="FirstName"
-                        [ngClass]="{ 'is-invalid': f.fname.touched && f.fname.errors }">
-                      <div *ngIf="f.fname.touched && f.fname.errors" class="invalid-feedback">
-                        <div *ngIf="f.fname.errors.required" class="text-danger"> FirstName is required</div>
+                      <input type="text" 	[(ngModel)]="user.firstName" formControlName="firstName" class="form-control "
+                        id="firstName" placeholder="Enter FirstName"
+                        [ngClass]="{ 'is-invalid': findError.firstName.touched && findError.firstName.errors }">
+                      <div *ngIf="findError.firstName.touched && findError.firstName.errors" class="invalid-feedback">
+                        <div *ngIf="findError.firstName.errors.required" class="text-danger"> FirstName is required</div>
                       </div>
 
                     </div>
@@ -33,11 +33,11 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-user"></i></span>
                       </div>
-                      <input type="text" [(ngModel)]="userObj.lastName" formControlName="lname" class="form-control "
-                        id="lname" placeholder="LasttName"
-                        [ngClass]="{ 'is-invalid': f.lname.touched && f.lname.errors }">
-                      <div *ngIf="f.lname.touched && f.lname.errors" class="invalid-feedback">
-                        <div *ngIf="f.lname.errors.required" class="text-danger"> LasttName is required</div>
+                      <input type="text" 	[(ngModel)]="user.lastName" formControlName="lastName" class="form-control "
+                        id="lastName" placeholder="LasttName"
+                        [ngClass]="{ 'is-invalid': findError.lastName.touched && findError.lastName.errors }">
+                      <div *ngIf="findError.lastName.touched && findError.lastName.errors" class="invalid-feedback">
+                        <div *ngIf="findError.lastName.errors.required" class="text-danger"> LasttName is required</div>
                       </div>
 
                     </div>
@@ -45,12 +45,12 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-envelope"></i></span>
                       </div>
-                      <input type="email" [(ngModel)]="userObj.email" formControlName="email" class="form-control "
+                      <input type="email" [(ngModel)]="user.email"  formControlName="email" class="form-control "
                         id="email" placeholder="Email Address"
-                        [ngClass]="{ 'is-invalid': f.email.touched && f.email.errors }">
-                      <div *ngIf="f.email.touched && f.email.errors" class="invalid-feedback">
-                        <div *ngIf="f.email.errors.required" class="text-danger"> Email is required</div>
-                        <div *ngIf="f.email.errors.pattern">Email must be a valid.</div>
+                        [ngClass]="{ 'is-invalid': findError.email.touched && findError.email.errors }">
+                      <div *ngIf="findError.email.touched && findError.email.errors" class="invalid-feedback">
+                        <div *ngIf="findError.email.errors.required" class="text-danger">Email is required</div>
+                        <div *ngIf="findError.email.errors.pattern">Email must be a valid.</div>
                       </div>
 
                     </div>
@@ -58,9 +58,9 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-key"></i></span>
                       </div>
-                      <input type="password" [(ngModel)]="userObj.password" formControlName="password" class="form-control "
+                      <input type="text" 	[(ngModel)]="user.password"  formControlName="password" class="form-control "
                         id="password" placeholder="Password"
-                        [ngClass]="{ 'is-invalid': f.password.touched && f.password.errors }">
+                        [ngClass]="{ 'is-invalid': findError.password.touched && findError.password.errors }">
                         <div class="info">
                           <i class="fa fa-info-circle"></i>                    
                           <span class="extra-info">
@@ -72,14 +72,14 @@
                           </ul>
                           </span>
                         </div>
-                      <div *ngIf="f.password.touched && f.password.errors" class="invalid-feedback">
-                        <div *ngIf="f.password.errors.required" class="text-danger"> Password is required.</div>
-                        <div *ngIf="f.password.errors.minlength" class="text-danger">Password must be at least 8
+                      <div *ngIf="findError.password.touched && findError.password.errors" class="invalid-feedback">
+                        <div *ngIf="findError.password.errors.required" class="text-danger"> Password is required.</div>
+                        <div *ngIf="findError.password.errors.minlength" class="text-danger">Password must be at least 8
                           characters.</div>
-                        <div *ngIf="f.password.errors.pattern" class="text-danger">Password must be a contain uppercase
+                        <div *ngIf="findError.password.errors.pattern" class="text-danger">Password must be a contain uppercase
                           and lowercase letter.
                         </div>
-                        <div *ngIf="f.password.errors.confirmedValidator" class="text-danger">Password should not
+                        <div *ngIf="findError.password.errors.confirmedValidator" class="text-danger">Password should not
                           contain
                           firstname or
                           lastname.</div>

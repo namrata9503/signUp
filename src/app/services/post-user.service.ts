@@ -26,9 +26,9 @@ export class PostUserService {
 
     return this.http
       .post<User[]>(this.endpoint + '/users', user, {
-        headers,
-        observe: 'response',
-      })
+      headers,
+      observe: 'response',
+    })
       .pipe(retry(1), catchError(this.processError));
   }
   processError(err: any): Observable<any> {

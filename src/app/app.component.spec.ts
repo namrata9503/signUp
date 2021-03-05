@@ -1,10 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { ConfirmedValidator } from './shared/PasswordValidator';
 import { AppComponent } from './app.component';
 import {
-  HttpClientTestingModule,} from '@angular/common/http/testing';
+  HttpClientTestingModule, } from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -43,7 +42,7 @@ describe('Component: SignUp', () => {
   });
   it('FirstName field validity', () => {
     let errors = {};
-    let firstName = component.form.controls['fname'];
+    const firstName = component.form.controls.firstName;
     expect(firstName.valid).toBeFalsy();
 
     // firstName field is required
@@ -53,7 +52,7 @@ describe('Component: SignUp', () => {
   });
   it('LastName field validity', () => {
     let errors = {};
-    let lastName = component.form.controls['lname'];
+    const lastName = component.form.controls.lastName;
     expect(lastName.valid).toBeFalsy();
 
     // lastName field is required
@@ -63,7 +62,7 @@ describe('Component: SignUp', () => {
   });
   it('Email field validity', () => {
     let errors = {};
-    let email = component.form.controls['email'];
+    const email = component.form.controls.email;
     expect(email.valid).toBeFalsy();
 
     // email field is required
@@ -85,7 +84,7 @@ describe('Component: SignUp', () => {
 
   it('password field validity', () => {
     let errors = {};
-    const password = component.form.controls['password'];
+    const password = component.form.controls.password;
     expect(password.valid).toBeFalsy();
 
     password.setValue('');

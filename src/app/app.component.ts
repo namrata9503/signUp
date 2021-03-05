@@ -1,49 +1,47 @@
+/* eslint-disable @typescript-eslint/unbound-method */
+
 import {
   Component,
   OnInit,
   Inject,
   Input,
   Renderer2,
-  ElementRef
+  ElementRef,
 } from '@angular/core';
-import {
-  FormGroup,
-  Validators,
-  FormBuilder,
-  AbstractControlOptions,
-} from '@angular/forms';
-import { ConfirmedValidator } from './shared/PasswordValidator';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { passwordValidator } from './shared/PasswordValidator';
 import { PostUserService } from './services/post-user.service';
 import { DOCUMENT } from '@angular/common';
+import { Data } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  @Input() user = { firstName: '', lastName: '', password: '', email: '' };
   isDisabled = false;
   form: FormGroup = new FormGroup({});
   errorMessage: boolean | undefined;
   submitted = false;
   loading = false;
   updateMessage: string | undefined;
-  @Input() userObj = { firstName: '', lastName: '', password: '', email: '' };
-  formGroup: any;
+  formGroup: FormGroup | undefined;
 
   constructor(
-    private formBuilder: FormBuilder,
     private postUsers: PostUserService,
+    private formBuilder: FormBuilder,
     private renderer: Renderer2,
     private el: ElementRef,
     @Inject(DOCUMENT) private document: Document
   ) {}
 
-  public ngOnInit(): void {
+  ngOnInit(): void {
     this.form = this.formBuilder.group(
       {
-        fname: ['', [Validators.required]],
-        lname: ['', [Validators.required]],
+        firstName: ['', [Validators.required]],
+        lastName: ['', [Validators.required]],
         email: [
           '',
           [
@@ -63,24 +61,28 @@ export class AppComponent {
         ],
       },
       {
-        validator: ConfirmedValidator('password', 'fname', 'lname'),
-      } as AbstractControlOptions
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        validator: passwordValidator('password', 'firstName', 'lastName'),
+      }
     );
   }
 
-  get f(): any {
+  get findError(): any {
     return this.form.controls;
   }
 
-  postUser(data: any): void {
+  postUser(data: Data): void {
     this.loading = true;
     this.isDisabled = true;
 
-    this.postUsers.postUser(this.userObj).subscribe(
-      (userResponse: any) => {
+    console.log(data);
+
+    this.postUsers.postUser(this.user).subscribe(
+      (userResponse: Response) => {
+        console.log(userResponse);
         this.handleSuccess();
       },
-      (error: any) => {
+      (error: Error) => {
         this.handleError(error);
       }
     );
