@@ -1,13 +1,6 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 
-import {
-  Component,
-  OnInit,
-  Inject,
-  Input,
-  Renderer2,
-  ElementRef,
-} from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { passwordValidator } from '../shared/PasswordValidator';
@@ -21,7 +14,6 @@ import { Data } from '@angular/router';
 })
 export class SignUpComponent implements OnInit {
   @Input() user = { firstName: '', lastName: '', password: '', email: '' };
-  isDisabled = false;
   form: FormGroup = new FormGroup({});
   errorMessage: boolean | undefined;
   submitted = false;
@@ -32,8 +24,6 @@ export class SignUpComponent implements OnInit {
   constructor(
     private postUsers: PostUserService,
     private formBuilder: FormBuilder,
-    private renderer: Renderer2,
-    private el: ElementRef,
     @Inject(DOCUMENT) private document: Document,
     private router: Router
   ) {}
@@ -68,25 +58,21 @@ export class SignUpComponent implements OnInit {
     );
   }
 
-  get findError(): any {
+  get findError(): Data {
     return this.form.controls;
   }
 
   postUser(data: Data): void {
     this.loading = true;
-    this.isDisabled = true;
     this.submitted = true;
-
-
     console.log(data);
-
     this.postUsers.postUser(this.user).subscribe(
-      (userResponse: Response) => {
-        console.log(userResponse);
-
+      (res) => {
+        console.log(res);
         this.handleSuccess();
       },
       (error: Error) => {
+        this.loading = true;
         this.handleError(error);
       }
     );
@@ -96,30 +82,20 @@ export class SignUpComponent implements OnInit {
   }
 
   private handleError(error: Error): void {
-    this.submitted = true;
+    this.submitted = false;
     this.loading = false;
     this.errorMessage = true;
     this.updateMessage =
       'Something went wrong on server.. Please try again later..!!!';
-    console.error('error caught in component', error);
     this.form.reset();
   }
 
   private handleSuccess(): void {
     console.log('Preparing post success activity');
-    // this.updateMessage = 'Data added successfully..!!!';
     this.loading = false;
     if (!this.form.invalid) {
-   this.router.navigateByUrl('/thanks');
+      this.router.navigateByUrl('/thanks');
     }
   }
-  // private handleValoidatoin(): void {
-  //   if (this.form.invalid) {
-  //     console.log('invalid', this.form.value);
-  //   }
-  //   else{
-  //     console.log('valid', this.form.value);
 
-  //   }
-  // }
 }

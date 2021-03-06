@@ -5,9 +5,7 @@ import { ThanksPageComponent } from './thanks-page/thanks-page.component';
 
 const routes: Routes = [
   { path: '', component: SignUpComponent },
-  { path: 'thanks', component: ThanksPageComponent },
-
-  // { path: '**', redirectTo: '' }
+  { path: 'thanks', component: ThanksPageComponent }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -2,21 +2,22 @@
     <div class="container-fluid">
       <div class="row mt-3">
         <div class="col-md-12">
-          <div class="text-center">
-            <p [ngClass]="{'error': errorMessage}">{{updateMessage}}</p>
-          </div>
+         
           <div class="d-flex justify-content-start  h-100">
-           
+          
             <div class="card mt-5" >
               <div class="card-header">
                 <h3 class="text-center">Sign Up Form</h3>
               </div>
               <div class="card-body">
-  
+                <div class="text-center">
+                  <p [ngClass]="{'error': errorMessage}">{{updateMessage}}</p>
+                </div>
                 <div >
                   <form [formGroup]="form" (ngSubmit)="postUser(user)">
   
                     <div class="row justify-content-between">
+                      <label for="firstName" class="control-label required">FirstName</label>
                       <div class="input-group form-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="fa fa-user"></i></span>
@@ -29,6 +30,7 @@
                         </div>
   
                       </div>
+                      <label for="lastName" class="control-label required">LastName</label>
                       <div class="input-group form-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="fa fa-user"></i></span>
@@ -41,6 +43,7 @@
                         </div>
   
                       </div>
+                      <label for="email" class="control-label required">Email Address</label>
                       <div class="input-group form-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="fa fa-envelope"></i></span>
@@ -54,11 +57,12 @@
                         </div>
   
                       </div>
+                      <label for="password" class="control-label required">Password</label>
                       <div class="input-group form-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="fa fa-key"></i></span>
                         </div>
-                        <input type="text" 	[(ngModel)]="user.password"  formControlName="password" class="form-control "
+                        <input type="password" 	[(ngModel)]="user.password"  formControlName="password" class="form-control "
                           id="password" placeholder="Enter Password"
                           [ngClass]="{ 'is-invalid': (submitted || findError.password.touched) && findError.password.errors }">
                           <div class="info">
@@ -86,6 +90,9 @@
                       type="submit">
                       Submit</button>
                     <button class="btn btn-primary m-2" (click)=" refreshPage()">Cancel</button>
+
+                  
+                 
                     </div>
                     
                     <div class="spinner_overlay" *ngIf="loading"></div>

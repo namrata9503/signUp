@@ -1,23 +1,21 @@
+label.required  {
+  font-weight: bold;
+}
+label.required:after {
+  color: #FF4500;
+  content: ' *';
+  display:inline;
+}
 .error {
     color: #FF4500;
     font-weight: bold;
-    
   }
-
-  .success {
-    color: #32CD32;
-    font-weight: bold;
- 
-  }
-  .card{
+.card{
     max-width: 500px;
     justify-content: center;
     margin: auto;
-    
-  }
-.btn__disable{
-    cursor: not-allowed;
-}
+    }
+
 .button_container{
   float: right;
 justify-content: right;
@@ -28,11 +26,9 @@ justify-content: right;
   z-index: 3000;
   top: 30%;
   left: 50%;
- 
-}
+ }
 .spinner_overlay {
-
-  position: fixed;
+position: fixed;
   left: 0;
   top: 0;
   width: 100%;
