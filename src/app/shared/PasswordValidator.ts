@@ -9,9 +9,10 @@ export const passwordValidator = (
   const last = controls.get(lastName);
   const pwd = controls.get(password);
 
-  if ('' !== pwd?.value && '' !== first?.value && '' !== last?.value) {
-    if (pwd?.value.includes(first?.value) || pwd?.value.includes(last?.value)) {
-      return pwd?.setErrors({ confirmedValidator: true });
-    }
+  if (
+    ('' !== first?.value && pwd?.value.includes(first?.value)) ||
+    ('' !== last?.value && pwd?.value.includes(last?.value))
+  ) {
+    return pwd?.setErrors({ passwordValidator: true });
   }
 };

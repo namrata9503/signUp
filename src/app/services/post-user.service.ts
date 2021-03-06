@@ -11,24 +11,17 @@ export class PostUserService {
   endpoint = 'https://demo-api.now.sh';
 
   constructor(private http: HttpClient) {}
-  private httpHeader = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-    }),
-  };
 
   postUser(user: User): any {
     const headers = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS,POST,PUT',
       'Content-Type': 'application/json',
     });
 
     return this.http
       .post<User[]>(this.endpoint + '/users', user, {
-      headers,
-      observe: 'response',
-    })
+        headers,
+        observe: 'response',
+      })
       .pipe(retry(1), catchError(this.processError));
   }
   processError(err: any): Observable<any> {
