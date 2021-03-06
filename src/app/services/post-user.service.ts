@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/unbound-method */
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user';
 import { retry, catchError } from 'rxjs/operators';
@@ -10,7 +11,8 @@ import { Data } from '@angular/router';
 })
 export class PostUserService {
   // REST API
-  endpoint = 'https://demo-api.now.sh';
+  baseUrl = environment.baseUrl;
+
 
   constructor(private http: HttpClient) {}
 
@@ -20,7 +22,7 @@ export class PostUserService {
     });
 
     return this.http
-      .post<User[]>(this.endpoint + '/users', user, { headers, observe: 'response'})
+      .post<User[]>(this.baseUrl + '/users', user, { headers, observe: 'response'})
       .pipe(retry(1), catchError(this.processError));
   }
   processError(err: ErrorEvent): Observable<Error> {
