@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "e2e": "ng e2e",
-    "lint": "eslint -c .eslintrc.js --ext .ts ./src"
+    "lint": "eslint -c .eslintrc.js --ext .ts ./src",
+    "deploy": "ng build --prod && firebase deploy"
   },
   "private": true,
   "dependencies": {
