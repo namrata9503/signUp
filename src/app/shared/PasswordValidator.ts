@@ -1,5 +1,4 @@
-import { HttpRequest, HttpResponse } from '@angular/common/http';
-import { AbstractControl, FormControl } from '@angular/forms';
+import { AbstractControl } from '@angular/forms';
 import { Data } from '@angular/router';
 
 export const passwordValidator = (

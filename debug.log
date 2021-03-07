@@ -12,3 +12,7 @@
 [0304/223253.816:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
 [0307/152624.428:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
 [0307/162440.095:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[0307/171047.450:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[0307/171822.459:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[0307/171822.460:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[0307/233223.319:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)

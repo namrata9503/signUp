@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "~11.2.3",
     "@angular/router": "~11.2.3",
     "@ng-bootstrap/ng-bootstrap": "^9.0.2",
+    "@types/express": "^4.17.11",
     "bootstrap": "^4.6.0",
     "cors": "^2.8.5",
     "font-awesome": "^4.7.0",

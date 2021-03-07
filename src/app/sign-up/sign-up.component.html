@@ -17,7 +17,7 @@
                   <form [formGroup]="form" (ngSubmit)="postUser(user)">
   
                     <div class="row justify-content-between">
-                      <label for="firstName" class="control-label required">FirstName</label>
+                      <label for="firstName" class="control-label required">First Name</label>
                       <div class="input-group form-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="fa fa-user"></i></span>
@@ -26,11 +26,11 @@
                           id="firstName" placeholder="Enter First Name"
                           [ngClass]="{ 'is-invalid': (submitted || findError.firstName.touched) && findError.firstName.errors }">
                         <div *ngIf="submitted || findError.firstName.touched && findError.firstName.errors" class="invalid-feedback">
-                          <div *ngIf=" findError.firstName.errors?.required" class="text-danger"> Please enter your firstname.</div>
+                          <div *ngIf=" findError.firstName.errors?.required" class="text-danger"> Please enter your First Name.</div>
                         </div>
   
                       </div>
-                      <label for="lastName" class="control-label required">LastName</label>
+                      <label for="lastName" class="control-label required">Last Name</label>
                       <div class="input-group form-group">
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="fa fa-user"></i></span>
@@ -39,7 +39,7 @@
                           id="lastName" placeholder="Enter Last Name"
                           [ngClass]="{ 'is-invalid':  (submitted || findError.lastName.touched) && findError.lastName.errors }">
                         <div *ngIf="submitted || findError.lastName.touched && findError.lastName.errors" class="invalid-feedback">
-                          <div *ngIf="findError.lastName.errors?.required" class="text-danger">Please enter your lastname.</div>
+                          <div *ngIf="findError.lastName.errors?.required" class="text-danger">Please enter your Last Name.</div>
                         </div>
   
                       </div>
@@ -77,7 +77,7 @@
                             </span>
                           </div>
                         <div *ngIf="submitted || findError.password.touched && findError.password.errors" class="invalid-feedback">
-                          <div *ngIf="findError.password.errors?.required" class="text-danger"> Please enter your password.</div>
+                          <div *ngIf="findError.password.errors?.required" class="text-danger"> Please enter your Password.</div>
                           <div *ngIf="findError.password.errors?.minlength" class="text-danger">Please enter password atleast 8 characters.</div>
                           <div *ngIf="findError.password.errors?.pattern" class="text-danger">Please enter password atleast lowercase and uppercase letters.
                           </div>

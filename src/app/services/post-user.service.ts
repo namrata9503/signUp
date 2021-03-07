@@ -11,14 +11,12 @@ import { Data } from '@angular/router';
 })
 export class PostUserService {
   baseUrl = environment.baseUrl;
-  prod = environment.production;
   constructor(private http: HttpClient) {}
 
   postUser = (user: User): Observable<Data> => {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
-    console.log('production ', this.prod);
     return this.http
       .post<User[]>(`${this.baseUrl}/users`, user, {headers, observe: 'response'})
       .pipe(retry(1), catchError(this.processError));

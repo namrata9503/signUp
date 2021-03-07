@@ -4,8 +4,6 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { PostUserService } from './post-user.service';
-import { formatCurrency } from '@angular/common';
-
 let postService: PostUserService;
 let httpMock: HttpTestingController;
 describe('PostUserService', () => {
@@ -42,7 +40,7 @@ describe('postUser()', () => {
         password: 'Qu12345678',
       })
       .subscribe((res) => {
-        console.log('data : ', res.body.firstName);
+        console.log(`data : ${res.body.firstName}`);
 
         expect(res.body.firstName).toEqual('Jon');
         expect(res.body.lastName).toEqual('Doe');
