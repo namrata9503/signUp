@@ -15,11 +15,11 @@ import { Data } from '@angular/router';
 export class SignUpComponent implements OnInit {
   @Input() user = { firstName: '', lastName: '', password: '', email: '' };
   form: FormGroup = new FormGroup({});
-  errorMessage: boolean | undefined;
+  errorMessage?: boolean;
   submitted = false;
   loading = false;
-  updateMessage: string | undefined;
-  formGroup: FormGroup | undefined;
+  updateMessage?: string;
+  formGroup?: FormGroup;
 
   constructor(
     private postUsers: PostUserService,
@@ -62,40 +62,43 @@ export class SignUpComponent implements OnInit {
     return this.form.controls;
   }
 
-  postUser(data: Data): void {
-    this.loading = true;
+  postUser = (data: Data): void => {
     this.submitted = true;
-    console.log(data);
-    this.postUsers.postUser(this.user).subscribe(
-      (res) => {
-        console.log(res);
-        this.handleSuccess();
-      },
-      (error: Error) => {
-        this.loading = true;
-        this.handleError(error);
-      }
-    );
-  }
-  refreshPage(): void {
+    if (!this.form.invalid) {
+      this.loading = true;
+      console.log(`Submitting request with ${String(data.email)} account.`);
+      this.postUsers.postUser(this.user).subscribe(
+        (res) => {
+          console.log(
+            `Success response with Http status ${String(res.status)}`
+          );
+          this.handleSuccess();
+        },
+        (error: Error) => {
+          this.loading = true;
+          this.handleError(error);
+        }
+      );
+    }
+  };
+  refreshPage = (): void => {
     this.document.location.reload();
-  }
+  };
 
-  private handleError(error: Error): void {
+  private handleError = (error: Error): void => {
     this.submitted = false;
     this.loading = false;
     this.errorMessage = true;
     this.updateMessage =
       'Something went wrong on server.. Please try again later..!!!';
+    console.error(`Error message: ', ${String(error)}`);
     this.form.reset();
-  }
+  };
 
-  private handleSuccess(): void {
-    console.log('Preparing post success activity');
+  private handleSuccess = (): void => {
     this.loading = false;
     if (!this.form.invalid) {
       this.router.navigateByUrl('/thanks');
     }
-  }
-
+  };
 }

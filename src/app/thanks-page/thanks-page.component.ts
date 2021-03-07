@@ -10,7 +10,7 @@ export class ThanksPageComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
-  signUp(): void {
-    this.router.navigateByUrl('');
-  }
+  signUp = (): void => {
+    this.router.navigateByUrl('/');
+  };
 }
