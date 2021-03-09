@@ -16,8 +16,38 @@
 
 ## Challenges
 - For code smell initially I used Tslint, after realising Tslint is deprecated, switching from Tslint to Eslint required additional efforts and it is great learning..!
+- Its quite challenging to remove all observations highlited by Eslint.
+- Deployed project on firebase could not work on one go. 
 
 ## Get started
+
+We need to setup Angular environment by installing required softwares and then need to setup project
+### Angular environment setup:
+Lets setup the environment from begining..!
+
+#### Get required Angular development environment:
+
+- Node, (website: https://nodejs.org/en)
+- NPM, (Node Package Manager - comes inbuilt with Node)
+- Angular CLI = Command Line Interface, Angular CLI (Command Line Interface) for angular (website: https://cli.angular.io/),
+it allows the developer to build/generate building blocks of angular application like component, services, routings, modules, etc. with best practices quicker and easier)
+- Text Editor - Visual Studio Code
+
+#### Setup the environment:
+
+- Download and Install node (node comes with npm) (website: https://nodejs.org/en)
+- After installation check version of node and npm by command: `node -v` or `node --version` OR `npm -v` OR `npm --version`
+- Install Angular CLI (website https://cli.angular.io/) by using command: `npm install -g @angular/cli` (it will install Angular CLI globally)
+- After installation check version of angular CLI by using the command: `ng -v` OR `ng --version`, you can also verify angular CLI installation by command: `ng` OR `ng --help`
+- Create a new app with angular CLI by using syntax: ng new project-name: command: `ng new sign-up`
+- Go inside the project/app directory, command: `cd sign-up`
+- Build and run Angular App, command: `ng serve` OR `ng serve -o` OR `ng serve --open`
+- Go to the browser and launch/check Angular App by entering the web address: `localhost:4200`
+
+
+
+### Project setup:
+As environment is set lets setup the project..!
 
  #### Clone the repo
 ```sh
@@ -48,11 +78,33 @@ To start the app on local server `http://localhost:4200` use `npm start`
 ```
 
 
-#### Linter
-Run eslint on project files
+#### Migrate from TSLint to ESLint
+##### ESLint: Installation
+
 ```sh
-    npm run lint
+npm install --save-dev eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
 ```
+
+This command downloads and executes the utility to perform the migration.
+
+```sh
+npx tslint-to-eslint-config
+```
+There should now be a new `.eslintrc.js` file, and likely changes to other files, like .vscode/settings.json.
+
+
+##### ESLint: Run
+
+```sh
+ng lint
+```
+
+##### TSLint: Removal
+
+- Remove the `tslint.json` file.
+- Remove the dependency on tslint in the `package.json` file.
+- Uninstall TSLint with `npm uninstall tslint`
+
 #### Unit Test
 To execute unit test:
 ```sh
@@ -97,7 +149,7 @@ By using `npm run deploy` production ready code will get deploy to Firebase
 - [Angular] - HTML enhanced for web apps!
 - [TypeScript] - To make JavaScript development more efficient.
 - [Bootstrap] - CSS framework
-- [HTML/CSS] - Form Structure.
+- [HTML/SCSS] - Form Structure.
 - [Eslint] - To make code more consistent and avoiding bugs
 - [Font-Awesome] - Form field Icon
 - [Jasmine] - For unit test
