@@ -65,14 +65,14 @@
                         <input type="password" 	[(ngModel)]="user.password"  formControlName="password" class="form-control "
                           id="password" placeholder="Enter Password"
                           [ngClass]="{ 'is-invalid': (submitted || findError.password.touched) && findError.password.errors }">
-                          <div class="info">
+                          <div class="info d-lg-block d-none">
                             <i class="fa fa-info-circle"></i>                    
                             <span class="extra-info">
-                              <ul >
+                              <ul m-0>
   
-                              <li >Password must be at least 8 characters.</li>
-                              <li >Password must be a contain uppercase and lowercase letter.</li>
-                            <li >Password should not contain firstname or lastname.</li>
+                              <li class="pt-0 ml-2" >Password must be at least 8 characters.</li>
+                              <li class="pt-0  ml-2" >Password must be a contain uppercase and lowercase letter.</li>
+                              <li class="pt-0  ml-2" >Password should not contain firstname or lastname.</li>
                             </ul>
                             </span>
                           </div>

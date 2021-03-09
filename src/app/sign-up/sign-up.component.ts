@@ -3,8 +3,8 @@
 import { Component, OnInit, Inject, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { passwordValidator } from '../shared/PasswordValidator';
-import { PostUserService } from '../services/post-user.service';
+import { passwordValidator } from '@app-shared/PasswordValidator';
+import { PostUserService } from '@app-services/post-user.service';
 import { DOCUMENT } from '@angular/common';
 import { Data } from '@angular/router';
 @Component({

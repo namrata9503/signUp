@@ -19,8 +19,18 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@app-components/*": ["src/app/*"],
+      "@app-services/*": ["src/app/services/*"],
+      "@app-model/*": ["src/app/models/*"],
+      "@app-pipes/*": ["src/app/pipes/*"],
+      "@app-environments/*": ["src/environments/*"],
+      "@app-theme/*": ["theme/*"],
+      "@app-shared/*": ["src/app/shared/*"]
+  }
   },
+ 
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

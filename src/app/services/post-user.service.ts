@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
+import { environment } from '@app-environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User } from '../models/user';
+import { User } from '@app-model/user';
 import { retry, catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 import { Data } from '@angular/router';

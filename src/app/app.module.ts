@@ -4,11 +4,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import { PostUserService } from './services/post-user.service';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { ThanksPageComponent } from './thanks-page/thanks-page.component';
+import { AppComponent } from '@app-components/app.component';
+import { PostUserService } from '@app-services/post-user.service';
+import { SignUpComponent } from '@app-components/sign-up/sign-up.component';
+import { ThanksPageComponent } from '@app-components/thanks-page/thanks-page.component';
 
 
 @NgModule({
