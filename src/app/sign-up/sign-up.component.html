@@ -2,10 +2,8 @@
     <div class="container-fluid">
       <div class="row mt-3">
         <div class="col-md-12">
-         
-          <div class="d-flex justify-content-start  h-100">
-          
-            <div class="card mt-5" >
+         <div class="d-flex justify-content-start  h-100">
+           <div class="card mt-5" >
               <div class="card-header">
                 <h3 class="text-center">Sign Up Form</h3>
               </div>
@@ -15,7 +13,6 @@
                 </div>
                 <div >
                   <form [formGroup]="form" (ngSubmit)="postUser(user)">
-  
                     <div class="row justify-content-between">
                       <label for="firstName" class="control-label required">First Name</label>
                       <div class="input-group form-group">
@@ -28,7 +25,6 @@
                         <div *ngIf="submitted || findError.firstName.touched && findError.firstName.errors" class="invalid-feedback">
                           <div *ngIf=" findError.firstName.errors?.required" class="text-danger"> Please enter your First Name.</div>
                         </div>
-  
                       </div>
                       <label for="lastName" class="control-label required">Last Name</label>
                       <div class="input-group form-group">
@@ -41,7 +37,6 @@
                         <div *ngIf="submitted || findError.lastName.touched && findError.lastName.errors" class="invalid-feedback">
                           <div *ngIf="findError.lastName.errors?.required" class="text-danger">Please enter your Last Name.</div>
                         </div>
-  
                       </div>
                       <label for="email" class="control-label required">Email Address</label>
                       <div class="input-group form-group">
@@ -55,7 +50,6 @@
                           <div *ngIf="findError.email.errors?.required" class="text-danger">Please enter your Email Address.</div>
                           <div *ngIf="findError.email.errors?.pattern">Please enter valid Email Address.</div>
                         </div>
-  
                       </div>
                       <label for="password" class="control-label required">Password</label>
                       <div class="input-group form-group">
@@ -69,7 +63,6 @@
                             <i class="fa fa-info-circle"></i>                    
                             <span class="extra-info">
                               <ul m-0>
-  
                               <li class="pt-0 ml-2" >Password must be at least 8 characters.</li>
                               <li class="pt-0  ml-2" >Password must be a contain uppercase and lowercase letter.</li>
                               <li class="pt-0  ml-2" >Password should not contain firstname or lastname.</li>
@@ -91,7 +84,6 @@
                       Submit</button>
                     <button class="btn btn-primary m-2" (click)=" refreshPage()">Cancel</button>
                     </div>
-                    
                     <div class="spinner_overlay" *ngIf="loading"></div>
                     <div class=" spin d-flex justify-content-center align-items-center">
                       <div class="spinner-border  text-primary" style="width: 5rem; height: 5rem;border-width: 8px;"
@@ -106,6 +98,5 @@
           </div>
         </div>
       </div>
-  
     </div>
   </section>
