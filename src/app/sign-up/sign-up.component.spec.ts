@@ -42,7 +42,7 @@ describe('SignUpComponent', () => {
 
     it('FirstName field validity', () => {
       let errors = {};
-      const firstName = component.form.controls.firstName;
+      const { firstName } = component.form.controls;
       expect(firstName.valid).toBeFalsy();
 
       // firstName field is required
@@ -52,7 +52,7 @@ describe('SignUpComponent', () => {
     });
     it('LastName field validity', () => {
       let errors = {};
-      const lastName = component.form.controls.lastName;
+      const { lastName } = component.form.controls;
       expect(lastName.valid).toBeFalsy();
 
       // lastName field is required
@@ -62,7 +62,7 @@ describe('SignUpComponent', () => {
     });
     it('Email field validity', () => {
       let errors = {};
-      const email = component.form.controls.email;
+      const { email } = component.form.controls;
       expect(email.valid).toBeFalsy();
 
       // // email field is required
@@ -83,7 +83,7 @@ describe('SignUpComponent', () => {
     });
     it('password field validity', () => {
       let errors = {};
-      const password = component.form.controls.password;
+      const { password } = component.form.controls;
       expect(password.valid).toBeFalsy();
 
       password.setValue('');

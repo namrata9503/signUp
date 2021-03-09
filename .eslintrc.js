@@ -20,7 +20,10 @@ module.exports = {
     "extends": [
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
-        "@pxlwidgets/eslint-config"
+        "@pxlwidgets/eslint-config",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:import/typescript",
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -38,6 +41,7 @@ module.exports = {
     "rules": {
        
         "@angular-eslint/component-class-suffix": "error",
+        "import/extensions": "off",
         "@angular-eslint/component-selector": [
             "error",
             {
@@ -93,6 +97,7 @@ module.exports = {
                 }
             }
         ],
+        
         "@typescript-eslint/consistent-type-assertions": "error",
         "@typescript-eslint/dot-notation": "error",
         "@typescript-eslint/indent": [

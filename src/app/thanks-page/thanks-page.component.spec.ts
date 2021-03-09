@@ -9,7 +9,7 @@ describe('ThanksPageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [ThanksPageComponent]
+      declarations: [ThanksPageComponent],
     }).compileComponents();
   });
 

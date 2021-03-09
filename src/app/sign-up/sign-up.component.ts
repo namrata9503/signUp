@@ -1,10 +1,10 @@
 import { Component, OnInit, Inject, Input } from '@angular/core';
-import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
-import { Data } from '@angular/router';
+import { Router, Data } from '@angular/router';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { passwordValidator } from '@app-shared/PasswordValidator';
 import { PostUserService } from '@app-services/post-user.service';
+import { User } from '@app-model/user';
 
 @Component({
   selector: 'app-sign-up',
@@ -12,7 +12,12 @@ import { PostUserService } from '@app-services/post-user.service';
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
-  @Input() user = { firstName: '', lastName: '', password: '', email: '' };
+  @Input() user = {
+    firstName: '',
+    lastName: '',
+    password: '',
+    email: '',
+  };
   form: FormGroup = new FormGroup({});
   errorMessage?: boolean;
   submitted = false;
@@ -24,7 +29,7 @@ export class SignUpComponent implements OnInit {
     private postUsers: PostUserService,
     private formBuilder: FormBuilder,
     @Inject(DOCUMENT) private document: Document,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -61,26 +66,23 @@ export class SignUpComponent implements OnInit {
       {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         validator: passwordValidator('password', 'firstName', 'lastName'),
-      }
+      },
     );
   };
 
-  postUser = (data: Data): void => {
+  postUser = (user: User): void => {
     this.submitted = true;
-    if (!this.form.invalid) {
+    if (this.form.valid) {
       this.loading = true;
-      console.log(`Submitting request with ${String(data.email)} account.`);
+      console.log(`Submitting request with ${String(user.email)} account.`);
       this.postUsers.postUser(this.user).subscribe(
-        (res) => {
-          console.log(
-            `Success response with Http status ${String(res.status)}`
-          );
+        () => {
           this.handleSuccess();
         },
         (error: Error) => {
           this.loading = true;
           this.handleError(error);
-        }
+        },
       );
     }
   };
@@ -100,7 +102,7 @@ export class SignUpComponent implements OnInit {
 
   private handleSuccess = (): void => {
     this.loading = false;
-    if (!this.form.invalid) {
+    if (this.form.valid) {
       this.router.navigateByUrl('/thanks');
     }
   };
