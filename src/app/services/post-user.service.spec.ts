@@ -3,7 +3,8 @@ import {
   HttpClientTestingModule,
   HttpTestingController,
 } from '@angular/common/http/testing';
-import { PostUserService } from './post-user.service';
+import { PostUserService } from '@app-services/post-user.service';
+
 let postService: PostUserService;
 let httpMock: HttpTestingController;
 describe('PostUserService', () => {

@@ -17,3 +17,4 @@ export const passwordValidator = (
     return pwd?.setErrors({ passwordValidator: true });
   }
 };
+

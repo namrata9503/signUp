@@ -1,13 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import {
   HttpClientTestingModule,
-  HttpTestingController,
 } from '@angular/common/http/testing';
 import { By } from '@angular/platform-browser';
-import { SignUpComponent } from './sign-up.component';
+import { SignUpComponent } from '@app-components/sign-up/sign-up.component';
 
 describe('SignUpComponent', () => {
   let component: SignUpComponent;

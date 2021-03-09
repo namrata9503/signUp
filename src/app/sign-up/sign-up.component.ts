@@ -1,12 +1,11 @@
-/* eslint-disable @typescript-eslint/unbound-method */
-
 import { Component, OnInit, Inject, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { DOCUMENT } from '@angular/common';
+import { Data } from '@angular/router';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { passwordValidator } from '@app-shared/PasswordValidator';
 import { PostUserService } from '@app-services/post-user.service';
-import { DOCUMENT } from '@angular/common';
-import { Data } from '@angular/router';
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -29,6 +28,14 @@ export class SignUpComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.formValidation();
+  }
+
+  get findError(): Data {
+    return this.form.controls;
+  }
+
+  formValidation = (): void => {
     this.form = this.formBuilder.group(
       {
         firstName: ['', [Validators.required]],
@@ -56,11 +63,7 @@ export class SignUpComponent implements OnInit {
         validator: passwordValidator('password', 'firstName', 'lastName'),
       }
     );
-  }
-
-  get findError(): Data {
-    return this.form.controls;
-  }
+  };
 
   postUser = (data: Data): void => {
     this.submitted = true;
